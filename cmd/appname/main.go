@@ -28,11 +28,35 @@ func main() {
 	//module := math.Hypot(real(z), imag(z))
 	//fmt.Println("module: ", module)
 	//fmt.Println(real(z), imag(z))
-	a := 123
+	//a := 123
 	//b := "123"
 	//c := "456"
 	//result := a == (b + c)
 	//fmt.Println(result)
 	//fmt.Println(len(a))
-	fmt.Printf("a的类型是：%d", a)
+	//var _Customer = "123"
+	//var _A = 123
+	//var _B = 123.123
+	//fmt.Printf("%T\n", _Customer)
+	//fmt.Printf("%T\n", _A)
+	//fmt.Printf("%T\n", _B)
+	//var _A, _b, _C = 1, "123", 11.11
+	////fmt.Println(_A, _b, _C)
+	//fmt.Printf("_A的类型为：%T\n", _A)
+	//fmt.Println("_A的值为：", _A)
+	//fmt.Printf("_b的类型为：%T\n", _b)
+	//fmt.Println("_b的值为：", _b)
+	//fmt.Printf("_C的类型为：%T\n", _C)
+	//fmt.Println("_C的值为：", _C)
+	// 使用短变量声明
+	Customer := "limengjie"
+	age := 27
+	gongzi := 23000.91
+	fmt.Printf("Customer的类型为：%T\n", Customer)
+	fmt.Println("Customer的值为：", Customer)
+	fmt.Printf("age的类型为：%T\n", age)
+	fmt.Println("age的值为：", age)
+	fmt.Printf("gongzi的类型为：%T\n", gongzi)
+	fmt.Println("gongzi的值为", gongzi)
+	//fmt.Printf("a的类型是：%d", a)
 }
