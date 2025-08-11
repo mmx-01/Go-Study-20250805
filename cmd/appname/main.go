@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+const PI = 100
+
 func main() {
 	//fmt.Println("测试")
 	//fmt.Println(pkg1.Demo1())
@@ -49,14 +51,35 @@ func main() {
 	//fmt.Printf("_C的类型为：%T\n", _C)
 	//fmt.Println("_C的值为：", _C)
 	// 使用短变量声明
-	Customer := "limengjie"
-	age := 27
-	gongzi := 23000.91
-	fmt.Printf("Customer的类型为：%T\n", Customer)
-	fmt.Println("Customer的值为：", Customer)
-	fmt.Printf("age的类型为：%T\n", age)
-	fmt.Println("age的值为：", age)
-	fmt.Printf("gongzi的类型为：%T\n", gongzi)
-	fmt.Println("gongzi的值为", gongzi)
+	//Customer := "limengjie"
+	//age := 27
+	//gongzi := 23000.91
+	//fmt.Printf("Customer的类型为：%T\n", Customer)
+	//fmt.Println("Customer的值为：", Customer)
+	//fmt.Printf("age的类型为：%T\n", age)
+	//fmt.Println("age的值为：", age)
+	//fmt.Printf("gongzi的类型为：%T\n", gongzi)
+	//fmt.Println("gongzi的值为", gongzi)
 	//fmt.Printf("a的类型是：%d", a)
+	//Go语言常量
+	//const PI = 100
+	//PI = 101
+	//fmt.Println(PI)
+	//p := 1231
+	//q := 4
+
+	//声明变量但不初始化
+	//var cainiaojc1 string
+	//var cainiaojc2 string
+	//var cainiaojc3 float64
+	//var cainiaojc4 bool
+
+	//fmt.Println(p ^ q)
+	//fmt.Println(cainiaojc1)
+
+	//fmt.Println(PI + 1)
+	a := 123
+	b := 9
+	result := float64(a) / float64(b)
+	fmt.Println(result)
 }
