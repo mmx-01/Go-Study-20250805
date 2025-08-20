@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 const PI = 100
 
 func main() {
@@ -112,21 +110,42 @@ func main() {
 	//
 	//}
 	// switch 不带可选参数
-	var value = 10
-	switch {
-	case value == 1:
-		fmt.Println(1)
-	case value == 2:
-		fmt.Println(2)
-	case value == 3:
-		fmt.Println(3)
-	case value != 4:
-		value += 1
-		if true {
-			fmt.Println(value)
-		}
-	case value == 11:
-		fmt.Println(value)
-	}
-	fmt.Println(value)
+	//var value = 10
+	//switch {
+	//case value == 1:
+	//	fmt.Println(1)
+	//case value == 2:
+	//	fmt.Println(2)
+	//case value == 3:
+	//	fmt.Println(3)
+	//case value != 4:
+	//	value += 1
+	//	if true {
+	//		fmt.Println(value)
+	//	}
+	//case value == 11:
+	//	fmt.Println(value)
+	//}
+	//fmt.Println(value)
+	/**
+	* 死锁：当您试图从通道读取或写入数据但通道没有值时。
+	因此，它阻塞goroutine的当前执行，并将控制传递给其他goroutine，
+	但是如果没有其他goroutine可用或其他goroutine睡眠，由于这种情况，
+	程序将崩溃。这种现象称为死锁。如下面的实例所示：
+	*/
+	//c := make(chan int) // 创建通道，这样的创建方式是可以直接使用的，例如以下例子
+	//select {
+	//case <-c: // 若在select语句中，没有设置默认的case语句，出现死锁的情况就会报错
+	//default:
+	//	fmt.Println("执行默认的select case语句")
+	//}
+	//// 创建一个直接可用的通道
+	//cc := make(chan string)
+	//
+	//go func() {
+	//	cc <- "给cc通道传递了一个值"
+	//}()
+	//
+	//value := <-cc
+	//fmt.Println(value)
 }
