@@ -72,15 +72,61 @@ func main() {
 	//for key, value := range mmap {
 	//	fmt.Println(key, "value"+value)
 	//}
-	chnl := make(chan int)
-	go func() {
-		chnl <- 1
-		chnl <- 10
-		chnl <- 100
-		chnl <- 1000
-		close(chnl)
-	}()
-	for i := range chnl {
-		fmt.Println(i)
+	//chnl := make(chan int)
+	//go func() {
+	//	chnl <- 1
+	//	chnl <- 10
+	//	chnl <- 100
+	//	chnl <- 1000
+	//	close(chnl)
+	//}()
+	//for i := range chnl {
+	//	fmt.Println(i)
+	//}
+	// 循环控制语句  break goto  continue
+	// break
+	//a := 10
+	//for i := 0; i <= a; i++ {
+	//	if i > a-5 {
+	//		break
+	//	}
+	//	fmt.Println(i)
+	//}
+	// continue
+	//var a = 10
+	//for i := 0; i <= a; i++ {
+	//	if i == a-5 {
+	//		continue
+	//	}
+	//	fmt.Println(i)
+	//
+	//}
+	// switch   带有可选参数的方法
+	//switch a := 3; a {
+	//case 1:
+	//	fmt.Println("1")
+	//case 2:
+	//	fmt.Println(2)
+	//case 3:
+	//	fmt.Println(3)
+	//
+	//}
+	// switch 不带可选参数
+	var value = 10
+	switch {
+	case value == 1:
+		fmt.Println(1)
+	case value == 2:
+		fmt.Println(2)
+	case value == 3:
+		fmt.Println(3)
+	case value != 4:
+		value += 1
+		if true {
+			fmt.Println(value)
+		}
+	case value == 11:
+		fmt.Println(value)
 	}
+	fmt.Println(value)
 }
