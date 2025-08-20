@@ -36,50 +36,51 @@ func main() {
 	//result := a == (b + c)
 	//fmt.Println(result)
 	//fmt.Println(len(a))
-	//var _Customer = "123"
-	//var _A = 123
-	//var _B = 123.123
-	//fmt.Printf("%T\n", _Customer)
-	//fmt.Printf("%T\n", _A)
-	//fmt.Printf("%T\n", _B)
-	//var _A, _b, _C = 1, "123", 11.11
-	////fmt.Println(_A, _b, _C)
-	//fmt.Printf("_A的类型为：%T\n", _A)
-	//fmt.Println("_A的值为：", _A)
-	//fmt.Printf("_b的类型为：%T\n", _b)
-	//fmt.Println("_b的值为：", _b)
-	//fmt.Printf("_C的类型为：%T\n", _C)
-	//fmt.Println("_C的值为：", _C)
-	// 使用短变量声明
-	//Customer := "limengjie"
-	//age := 27
-	//gongzi := 23000.91
-	//fmt.Printf("Customer的类型为：%T\n", Customer)
-	//fmt.Println("Customer的值为：", Customer)
-	//fmt.Printf("age的类型为：%T\n", age)
-	//fmt.Println("age的值为：", age)
-	//fmt.Printf("gongzi的类型为：%T\n", gongzi)
-	//fmt.Println("gongzi的值为", gongzi)
 	//fmt.Printf("a的类型是：%d", a)
-	//Go语言常量
-	//const PI = 100
-	//PI = 101
-	//fmt.Println(PI)
-	//p := 1231
-	//q := 4
-
-	//声明变量但不初始化
-	//var cainiaojc1 string
-	//var cainiaojc2 string
-	//var cainiaojc3 float64
-	//var cainiaojc4 bool
-
-	//fmt.Println(p ^ q)
-	//fmt.Println(cainiaojc1)
-
-	//fmt.Println(PI + 1)
-	a := 123
-	b := 9
-	result := float64(a) / float64(b)
-	fmt.Println(result)
+	// ================================新阶段，if else for==========================================
+	//a := 102
+	//if a > 1010 {
+	//	fmt.Println(true)
+	//} else {
+	//	fmt.Println(false)
+	//}
+	//a := 10
+	//for i := 1; i < a; i++ {
+	//	fmt.Println(i)
+	//}
+	//i := 1
+	//for {
+	//	if i < a {
+	//		fmt.Printf("%d ", i)
+	//	}
+	//	i++
+	//	if i > a {
+	//		break
+	//	}
+	//}
+	// 数组
+	//a := []string{"第一个元素 0", "第二个元素 1", "第三个元素 2"}
+	//for index, j := range a {
+	//	fmt.Println("当前索引位置：", index)
+	//	fmt.Println("当前元素值", j)
+	//}
+	//mmap := map[int]string{
+	//	1: "123",
+	//	2: "456",
+	//	3: "789",
+	//}
+	//for key, value := range mmap {
+	//	fmt.Println(key, "value"+value)
+	//}
+	chnl := make(chan int)
+	go func() {
+		chnl <- 1
+		chnl <- 10
+		chnl <- 100
+		chnl <- 1000
+		close(chnl)
+	}()
+	for i := range chnl {
+		fmt.Println(i)
+	}
 }
