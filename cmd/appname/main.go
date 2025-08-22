@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 const PI = 100
 
 func main() {
@@ -148,4 +150,81 @@ func main() {
 	//
 	//value := <-cc
 	//fmt.Println(value)
+	//var value =
+	//fmt.Printf("矩形的面积为：%d", testDemo1(123, 456))
+	//fmt.Println(testDemo2(`123`, `456`))
+	// 匿名函数
+	//func() {
+	//	fmt.Println("hello world")
+	//}()
+	//func(parameter_list) return_type {
+	//	//代码
+	//	//如果给定return_type，则使用return语句
+	//	//如果未提供return_type，则不
+	//	//使用return语句
+	//	return
+	//}()
+	// 匿名函数可以直接分配给变量，如下所示
+
+	//result := func() {
+	//	fmt.Println("Hello World,这是将一个匿名函数分配给一个变量")
+	//}
+	//result()
+
+	//fmt.Println(testDemo2("123", "456"))
+	// 在匿名函数中，传递参数
+	//resule := func(ele string) string {
+	//	return ele
+	//}("测试匿名函数传递参数")
+	//fmt.Println(resule)
+	// 将匿名函数当做参数传递给匿名函数
+	//result := func(q, p string) string {
+	//	return q + "_" + p
+	//}
+	//Lee(result)
+	//fmt.Println(result)
+	// 将匿名函数作为return 返回
+	result := GFG()
+	fmt.Println(result("Frist params 'i'", "Second params 'j'"))
+
+}
+
+// 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
+func testDemo1(wdith int, height int) int {
+
+	return wdith * height
+
+	//fmt.Println(str)
+}
+
+// 可变参数  若函数的参数写成可变参数，类型就变成数组类型了
+func testDemo2(element ...string) []string {
+	// 创建字符串切片的方式
+	// fruits := []string{"apple", "banana", "cherry"}
+	return element
+}
+
+// 创建一个名为Lee的函数，此函数的参数是一个匿名函数，i 是这个匿名函数的指针，表示指向这个函数，也可以说是函数的引用/变量
+// 这个匿名函数接收两个string类型的参数，q和p，函数Lee没有返参类型
+
+func Lee(i func(q, p string) string) {
+	fmt.Println(i("123", "456"))
+}
+
+//	func Lee(i func(q, p string) string) {
+//		│      │  │   │  │     │      │
+//		│      │  │   │  │     │      └── 内层函数i的返回类型：string
+//		│      │  │   │  │     └───────── 参数p的类型：string
+//		│      │  │   │  └─────────────── 参数q的类型：string
+//		│      │  │   └────────────────── 内层函数i的参数列表
+//		│      │  └────────────────────── 内层函数i的声明
+//		│      └───────────────────────── 参数i的名称
+//		└──────────────────────────────── 外层函数Lee的声明
+//
+// 返回匿名函数，go中不仅可以将一个匿名函数作为参数，并且还要将一个匿名函数使用return返回
+func GFG() func(i, j string) string {
+	value := func(i, j string) string {
+		return i + j + "测试返回一个匿名函数"
+	}
+	return value
 }
