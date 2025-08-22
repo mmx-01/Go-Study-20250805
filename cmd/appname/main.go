@@ -1,8 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 const PI = 100
+
+// 结构体
+type person struct {
+	name string
+	age  int
+}
+
+// 非结构体
+type p1 int
 
 func main() {
 	//fmt.Println("测试")
@@ -184,9 +197,44 @@ func main() {
 	//Lee(result)
 	//fmt.Println(result)
 	// 将匿名函数作为return 返回
-	result := GFG()
-	fmt.Println(result("Frist params 'i'", "Second params 'j'"))
+	//result := GFG()
+	//fmt.Println(result("Frist params 'i'", "Second params 'j'"))
 
+	//Z := 120
+	//
+	//fmt.Printf("Z值函数调用之前：%d\n", Z)
+	//
+	//Demo4(Z)
+	//
+	//fmt.Printf("Z值函数调用之后：%d", Z)
+	//var x int = 10
+	//var y int = 20
+	//fmt.Println("交换前的x的值：" + strconv.Itoa(x) + "交换前y的值：" + strconv.Itoa(y))
+	//swap(x, y)
+	//fmt.Println("交换后的x的值：" + strconv.Itoa(x) + "交换后y的值：" + strconv.Itoa(y))
+	//fmt.Println(y)
+	//swapData(&x, &y) // 交换成功，直接将引用传递
+	//fmt.Println(y)
+	//var a, b, c = returnDemo1(2, 4) // 函数接收两个参数，返回三个参数，将三个参数分别赋值到三个变量
+	//fmt.Println(a)
+	//fmt.Println(b)
+	//fmt.Println(c)
+	//var a, _ = mul_div(1, 2)
+	//fmt.Println(a)
+	//mul(10, 10)       // 1
+	//defer mul(20, 20) // 2
+	//show()            // 3
+	// 上述调用函数，执行顺序为 1、3、2 因为使用了defer关键字，延迟函数调用
+	// 直到延迟函数附近所有的函数执行完毕后，才会执行延迟函数
+	//res := person{
+	//	name: "123",
+	//	age:  123,
+	//}
+	//showPerson(res)
+	value1 := p1(123)
+	value2 := p1(2)
+	res := value2.showp1(value1)
+	fmt.Println(res)
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
@@ -227,4 +275,97 @@ func GFG() func(i, j string) string {
 		return i + j + "测试返回一个匿名函数"
 	}
 	return value
+}
+
+// main 函数
+func Demo3() int {
+	// 切片创建
+	//s := []int{6, 1, 3, 4, 5, 2}
+	//// 对切片进行排序
+	//sort.Ints(s)
+	//return s
+	// 查询索引值
+	str := "mengjie"
+	return strings.Index(str, "m") // 此方法会返回第一个匹配到的字符，并返回索引值（从0开始）
+}
+
+// init函数 执行顺序是在main之前，用途：可以在main函数未执行之前，初始化一些全局变量
+//func init() {
+//	fmt.Println("b")
+//}
+//
+//func init() {
+//	fmt.Println("a")
+//}
+
+//
+/**
+函数参数  实际参数不能通过函数调用的方式通过形参改变其值
+当函数传递过来一个参数的时候，传递的是参数的副本，而不是参数本身，所有即便
+传递过来参数也是不能改变的
+*/
+// 修改函数值，修改失败 原因如上
+
+func Demo4(Z int) {
+	Z = 10
+}
+
+// 交换函数值
+func swap(x, y int) string {
+	// 设置一个临时变量   x = 10 y = 20
+	var tmp int
+	tmp = x
+	x = y
+	y = tmp
+	return "交换后的x的值为：" + strconv.Itoa(x) + ", 修改后的y的值：" + strconv.Itoa(y)
+}
+
+// 引用调用
+func swapData(x, y *int) int {
+	var tmp int
+	tmp = *x
+	x = y
+	*y = tmp
+	return tmp
+}
+
+// return返回多个值
+func returnDemo(i, y int) (int, int, int) {
+	return i + y, i * y, i - y
+}
+
+// 给return返回值命名
+func returnDemo1(i, y int) (name1, name2, name3 int) {
+	name1 = i * y
+	name2 = i - y
+	name3 = i * i
+	return name1, name2, name3
+}
+
+// 空白标识符
+func mul_div(i, j int) (name1, name2 int) {
+	name1 = i * j
+	name2 = j - i
+	return name1, name2
+}
+
+// defer关键字  延迟函数调用
+func mul(i, j int) int {
+	reslut := i * j
+	fmt.Println(reslut)
+	return 0
+}
+func show() {
+	fmt.Println("测试延迟函数调用")
+}
+
+// 方法 结构体
+func showPerson(a person) {
+	fmt.Println(a.name)
+	fmt.Println(a.age)
+}
+
+// 方法 非结构体
+func (i p1) showp1(d2 p1) p1 {
+	return i * d2
 }
