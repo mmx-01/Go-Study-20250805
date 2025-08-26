@@ -14,8 +14,38 @@ type person struct {
 	age  int
 }
 
+// 创建两个结构体，学生和老师
+type student struct {
+	name   string
+	age    int
+	branch string
+}
+
+type teacher struct {
+	name     string
+	language string
+	per      person
+}
+
 // 非结构体
 type p1 int
+
+// 匿名字段
+type mal struct {
+	string
+	int
+	bool
+}
+
+// 创建一个函数，用作结构体的参数
+type testFunc func(int, int) int
+
+// 创建结构体
+type phone struct {
+	name string
+	age  int
+	fun  testFunc
+}
 
 func main() {
 	//fmt.Println("测试")
@@ -231,10 +261,91 @@ func main() {
 	//	age:  123,
 	//}
 	//showPerson(res)
-	value1 := p1(123)
-	value2 := p1(2)
-	res := value2.showp1(value1)
-	fmt.Println(res)
+	//value1 := p1(123)
+	//value2 := p1(2)
+	//res := value2.showp1(value1)
+	//fmt.Println(res)
+	//val1 := teacher{"小红", "英语、语文、这个老师是班主任"}
+	//val2 := student{"小明", 21, "计算机科学与技术"}
+	//val1.showDemo()
+	//val2.showDemo()
+	//result := person{"李梦杰", 123}
+	////result.name = "xzw"
+	//result.askPerson()
+	//tmp := person{"leemengjie", 13}
+	//tmp1 := &tmp
+	//fmt.Println((*tmp1).name) // 显示指针调用
+	//fmt.Println(tmp1.name)    // go中的语法糖
+	//fmt.Println(tmp.name)     // 普通的方法调用
+	// 以上的区别为：使用指针类型：从内存中找到person变量，然后解引用，从解引用后的person变量中找到name 显示调用和语法糖在内存中执行是一样的，只不过语法简洁
+	// 直接调用方法：找到内存中person变量，直接从变量中找到name的值
+	// 结构体比较 ==
+	//per1 := person{"li", 123}
+	//per2 := person{"li", 123}
+	//per3 := person{"li", 1213}
+	//fmt.Println(per1 == per2)
+	//fmt.Println(per2 == per3)
+	// 结构体比较  使用DeepEqual()方法
+	//per1 := person{"lee", 1}
+	//per2 := person{"lee", 2}
+	//fmt.Println(reflect.DeepEqual(per1, per2))
+	//result := teacher{per: person{"123", 11}}
+	//result.askDemo2()
+	//Element := struct {
+	//	name string
+	//	age  int
+	//}{
+	//	"姓名",
+	//	123,
+	//}
+	//fmt.Println(Element)
+	//result := mal{"姓名", 133, false}
+	//result.showMal()
+	//testFunc(1111, 1111)
+	//result := phone{"测试函数类型属性", 222, func(y int, x int) int {
+	//	return y + x
+	//}}
+	////fmt.Println("函数方法结果：", result.fun(result.age, result.age))
+	////fmt.Println("age：", result.age)
+	////fmt.Println("name：", result.name)
+	//result.Demo6()
+	//result := Demo7()
+	//for i := 1; i <= len(result); i++ {
+	//	fmt.Println(result[i-1])
+	//}
+	//fmt.Println(len(result))
+	//arr := [4]string{"231231", "2123", "443", "121"}
+	//fmt.Println(arr)
+	//for i, v := range arr {
+	//	fmt.Println(i, v)
+	//}
+	// 创建多维数组  创建多维数组的时候，第一个[4]表示可以创建几个数组，第二个[3]表示数组的长度
+	//arr := [4][3]int{
+	//	{1, 2, 3},
+	//	{5, 6, 7},
+	//	{7, 8, 9},
+	//	{3, 4, 2},
+	//}
+	//fmt.Println(arr)
+	//for i, v := range arr {
+	//	fmt.Println(i, v)
+	//}
+	// 数组复制
+	//arr := [...]string{"a", "b", "c", "d", "e", "f", "g"}
+	//fmt.Println("原始数组", arr)
+	//newArr := arr
+	//newArr[0] = "0000"
+	//fmt.Println("已更改的复制的数组", newArr)
+	// 通过引用复制数组
+	arr := [...]int{1, 2, 3, 4, 5}
+	fmt.Println("原始数组：", arr)
+	newArr := &arr
+	arr[1] = 10
+	fmt.Println("通过引用复制的数组：", newArr)
+	//for i, v := range newArr {
+	//	fmt.Println(i, v)
+	//}
+	fmt.Println(*newArr)
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
@@ -368,4 +479,53 @@ func showPerson(a person) {
 // 方法 非结构体
 func (i p1) showp1(d2 p1) p1 {
 	return i * d2
+}
+
+// 创建两个相同的方法，但是接收参数类型不同
+func (stu student) showDemo() {
+	fmt.Println("学生姓名：" + stu.name)
+	fmt.Println("学生年龄：" + strconv.Itoa(stu.age))
+	fmt.Println("所学学科：" + stu.branch)
+}
+func (tea teacher) showDemo() {
+	fmt.Println("老师姓名：" + tea.name)
+	fmt.Println("所授科目：" + tea.language)
+}
+
+// 访问结构体
+func (per person) askPerson() {
+	fmt.Println(per.name)
+	fmt.Println(per.age)
+}
+
+func (tea teacher) askDemo2() {
+	fmt.Println("打印嵌套结构体中person的name：" + tea.per.name)
+}
+
+// 匿名字段
+func (m mal) showMal() {
+	fmt.Println("字符串类型", m.string)
+	fmt.Println("数字类型", m.int)
+	fmt.Println("布尔类型", m.bool)
+}
+
+func limengjie(a, b, c string) string {
+	return a + b + c
+}
+
+// 测试结构体中嵌套函数类型参数
+func (ph phone) Demo6() {
+	fmt.Println(ph.name)
+	fmt.Println(ph.age)
+	fmt.Println(ph.fun(ph.age, ph.age))
+	//fmt.Println(ph.fun())
+}
+
+// 创建数组
+
+func Demo7() [2]string {
+	var studntArray [2]string
+	studntArray[0] = "1321"
+	studntArray[1] = "1322"
+	return studntArray
 }
