@@ -337,15 +337,24 @@ func main() {
 	//newArr[0] = "0000"
 	//fmt.Println("已更改的复制的数组", newArr)
 	// 通过引用复制数组
-	arr := [...]int{1, 2, 3, 4, 5}
-	fmt.Println("原始数组：", arr)
-	newArr := &arr
-	arr[1] = 10
-	fmt.Println("通过引用复制的数组：", newArr)
-	//for i, v := range newArr {
-	//	fmt.Println(i, v)
-	//}
-	fmt.Println(*newArr)
+	//arr := [...]int{1, 2, 3, 4, 5}
+	//fmt.Println("原始数组：", arr)
+	//newArr := &arr
+	//arr[1] = 10
+	//fmt.Println("通过引用复制的数组：", newArr)
+	////for i, v := range newArr {
+	////	fmt.Println(i, v)
+	////}
+	//fmt.Println(*newArr)
+	// 调用数组为参数的函数
+	//var arr = [...]string{"a", "b", "c", "d", "e", "f", "g"}
+	//result := Demo8(arr)
+	//fmt.Println(result)
+	// 创建切片
+	// 创建数组
+	var arr = [5]int{1, 2, 3, 4, 5}
+	myslice := arr[1:3] // 解释：通过数组创建一个切片，1表示从索引1开始，3表示切片大小，由于是从数组的索引1开始取的
+	fmt.Println(myslice)
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
@@ -493,39 +502,44 @@ func (tea teacher) showDemo() {
 }
 
 // 访问结构体
-func (per person) askPerson() {
-	fmt.Println(per.name)
-	fmt.Println(per.age)
-}
+//func (per person) askPerson() {
+//	fmt.Println(per.name)
+//	fmt.Println(per.age)
+//}
+//
+//func (tea teacher) askDemo2() {
+//	fmt.Println("打印嵌套结构体中person的name：" + tea.per.name)
+//}
+//
+//// 匿名字段
+//func (m mal) showMal() {
+//	fmt.Println("字符串类型", m.string)
+//	fmt.Println("数字类型", m.int)
+//	fmt.Println("布尔类型", m.bool)
+//}
+//
+//func limengjie(a, b, c string) string {
+//	return a + b + c
+//}
+//
+//// 测试结构体中嵌套函数类型参数
+//func (ph phone) Demo6() {
+//	fmt.Println(ph.name)
+//	fmt.Println(ph.age)
+//	fmt.Println(ph.fun(ph.age, ph.age))
+//	//fmt.Println(ph.fun())
+//}
+//
+//// 创建数组
+//
+//func Demo7() [2]string {
+//	var studntArray [2]string
+//	studntArray[0] = "1321"
+//	studntArray[1] = "1322"
+//	return studntArray
+//}
 
-func (tea teacher) askDemo2() {
-	fmt.Println("打印嵌套结构体中person的name：" + tea.per.name)
-}
-
-// 匿名字段
-func (m mal) showMal() {
-	fmt.Println("字符串类型", m.string)
-	fmt.Println("数字类型", m.int)
-	fmt.Println("布尔类型", m.bool)
-}
-
-func limengjie(a, b, c string) string {
-	return a + b + c
-}
-
-// 测试结构体中嵌套函数类型参数
-func (ph phone) Demo6() {
-	fmt.Println(ph.name)
-	fmt.Println(ph.age)
-	fmt.Println(ph.fun(ph.age, ph.age))
-	//fmt.Println(ph.fun())
-}
-
-// 创建数组
-
-func Demo7() [2]string {
-	var studntArray [2]string
-	studntArray[0] = "1321"
-	studntArray[1] = "1322"
-	return studntArray
+// 将数组当做函数参数传递
+func Demo8(a [7]string) [7]string {
+	return a
 }
