@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -352,9 +353,84 @@ func main() {
 	//fmt.Println(result)
 	// 创建切片
 	// 创建数组
-	var arr = [5]int{1, 2, 3, 4, 5}
-	myslice := arr[1:3] // 解释：通过数组创建一个切片，1表示从索引1开始，3表示切片大小，由于是从数组的索引1开始取的
-	fmt.Println(myslice)
+	//var arr = [5]int{1, 2, 3, 4, 5}
+	//myslice := arr[1:3] // 解释：通过数组创建一个切片，1表示从索引1开始，3表示切片大小，由于是从数组的索引1开始取的
+	//fmt.Println(myslice)
+	//fmt.Println("切片长度", len(myslice))
+	//fmt.Println("切片容量", cap(myslice))
+	// 切片容量4，是因为定义切片的时候是通过一个长度为5的数组定义的，然后从索引1开始取，计算切片容量为
+	// 从数组的索引1开始，到数组的尾索引结束，也就是元素5，索引4，从1~4容量为4
+
+	// 直接创建切片，而不是从数组定义
+	//var mySlice = []string{"1111", "2222", "3333"}
+	//mySlice1, mySlice2 := []int{1, 2, 3}, []int{4, 5, 6}
+	//fmt.Println("打印切片", mySlice)
+	//fmt.Println("切片长度", len(mySlice))
+	//fmt.Println("切片容量", cap(mySlice))
+	//
+	//fmt.Println(mySlice1)
+	//fmt.Println(mySlice2)
+	//mySlice := arr[:2]  // 返回[1,2] 从0开始取，取两位
+	//mySlice1 := arr[2:] // 返回[3,4,5] 从索引2开始取（数组中的3）到数组最后结束
+	//mySlice2 := arr[:]  // 返回[1,2,3,4,5] 全取
+	//fmt.Println(mySlice)
+	//var mySlice3 = make([]int, 3, 4)
+	//fmt.Println(len(mySlice3))
+	//fmt.Println(cap(mySlice3))
+	// 创建一个长度和容量相同的切片  创建切片最常用的方式
+	//mySlice := make([]int, 7)
+	////mySlice = {1,2,3,4,5,6,7}
+	//for i := 0; i < 7; i++ {
+	//	mySlice[i] = i + 1
+	//}
+	//fmt.Println("cap:", cap(mySlice), "len:", len(mySlice), "value:", mySlice)
+	//
+	//for index, value := range mySlice {
+	//	fmt.Println("index:", index, "value:", value)
+	//}
+	// 在for循环中使用空白符
+	//for _, value := range mySlice {
+	//	fmt.Println("value:", value)
+	//}
+	// 新建一个空的切片
+	//s := []int{}
+	//s = append(s, 11, 22, 32, 41)
+	//var m []int
+	//copy(s, m)
+	//cal := make([]int, 3)
+	////var calcopy []int
+	//cal = append(cal, 1, 2, 3, 4)
+	//calcopy := copy(cal, s)
+	//var m []int
+	////s = append(s, 0, 1, 2)
+	//fmt.Println(s == nil)
+	//fmt.Println(m == nil)
+	//for i := 0; i < 10; i++ {
+	//	s = append(s, i)
+	//}
+	//fmt.Println(cap(m))
+	//fmt.Println("s", s)
+
+	//fmt.Println("cal", cal)
+	//fmt.Println("calcopy", calcopy)
+	// 切片复制
+	// 新建一个切片
+	//s := make([]int, 3)
+	////m := []int{1, 2, 3}
+	//n := s
+	//fmt.Println(n)
+	// 使用make创建一个切片
+	slc := make([]int, 4)
+	slc[0] = 1
+	slc[1] = 3
+	slc[2] = 5
+	slc[3] = 2
+	// 对切片进行排序
+	fmt.Println("未排序之前", slc)
+	fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
+	sort.Ints(slc)
+	fmt.Println("排序之后", slc)
+	fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
