@@ -1,10 +1,11 @@
 package main
 
 import (
+	"NewProject/internal/pkg1/common"
 	"fmt"
-	"sort"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const PI = 100
@@ -420,17 +421,127 @@ func main() {
 	//n := s
 	//fmt.Println(n)
 	// 使用make创建一个切片
-	slc := make([]int, 4)
-	slc[0] = 1
-	slc[1] = 3
-	slc[2] = 5
-	slc[3] = 2
-	// 对切片进行排序
-	fmt.Println("未排序之前", slc)
-	fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
-	sort.Ints(slc)
-	fmt.Println("排序之后", slc)
-	fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
+	//slc := make([]int, 4)
+	//slc[0] = 1
+	//slc[1] = 3
+	//slc[2] = 5
+	//slc[3] = 2
+	//// 对切片进行排序
+	//fmt.Println("未排序之前", slc)
+	//fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
+	//sort.Ints(slc)
+	//fmt.Println("排序之后", slc)
+	//fmt.Println("验证是否是按照升序，返回true或false", sort.IntsAreSorted(slc))
+	// 字符串
+	//str := "mengjiee"
+	//fmt.Println(str)
+	//for _, value := range str {
+	//	fmt.Println(string(value))
+	//}
+	//for i := 0; i < len(str); i++ {
+	//	fmt.Println("字符串的字节为：", str[i])
+	//}
+	// 创建一个字节切片
+	//slc := []byte{0x47, 0x65, 0x65, 0x6b, 0x73}
+	//myStr := string(slc)
+	//fmt.Println(myStr)
+	//创建和初始化一个符文切片
+	//myslice2 := []rune{0x0047, 0x0065, 0x0065, 0x006b, 0x0073}
+	//myStr1 := string(myslice2)
+	//myStr2 := "𠀀"
+	////myStr3 := "这是一个测试字符"
+	////fmt.Println(myStr1)
+	////fmt.Println(utf8.RuneCountInString(myStr1))
+	////fmt.Println(len(myStr1))
+	//fmt.Println(utf8.RuneCountInString(myStr2))
+	//fmt.Println(len(myStr2))
+	// 字符串连接
+	//var b bytes.Buffer
+	//b.WriteString("hello world")
+	//b.WriteString("拼接字符串")
+	//fmt.Println(b.String())
+	//var a bytes.Buffer
+	//// 创建一个字符切片
+	//myStrSli := []string{"a", "b", "c"}
+	//for _, value := range myStrSli {
+	//	a.WriteString(value)
+	//}
+	//fmt.Println(a.String())
+	//a := "123"
+	//b := "mengjie"
+	//c := "梦杰"
+	//result := fmt.Sprintf("%s%s%s", a, b, c)
+	//fmt.Println(result)
+	//result := strings.Join(myStrSli, "===")
+	//fmt.Println(result)
+	// 字符串修剪
+	//str := "!!mengjie@"
+	//fmt.Println(strings.Trim(str, "!@"))
+	//fmt.Println(strings.TrimLeft(str, "!"))
+	//fmt.Println(strings.TrimRight(str, "@"))
+	//fmt.Println(strings.Trim(strings.TrimSpace(str), "!@"))
+	//fmt.Println(strings.TrimSuffix(strings.TrimSpace(str), "@")) // 修剪字符串指定后缀字符，若没有则返回原始字符串
+	//result := strings.Split(str, "")
+	//fmt.Println(result)
+	//fmt.Println(strings.Contains(str, "me"))
+	//fmt.Println(strings.ContainsAny(str, "me1"))
+	//fmt.Println(strings.Index(str, "m"))
+	//fmt.Println(strings.IndexByte(str, '0'))
+
+	/**
+	以下为计算器
+	*/
+	var a string
+	var b int
+	var c int
+	var _ string
+	fmt.Println("您好，欢迎使用命令行计算器，请按照以下提示语进行操作！")
+	for {
+		fmt.Print("1：加法；2：减法；3：乘法；4：除法；5：退出；\n")
+		fmt.Print("请选择上述序号进行操作: ")
+		fmt.Scan(&a)
+		if a == "5" {
+			break
+		}
+		time.Sleep(1 * time.Second)
+		e := "."
+		fmt.Print(e)
+		time.Sleep(1 * time.Second)
+		e += "."
+		fmt.Println(e)
+		time.Sleep(1 * time.Second)
+		fmt.Println("您选择的计算类型是：", common.Search(a))
+
+		fmt.Println("请输入要进行计算的两个数字，数字1：")
+		fmt.Scan(&b)
+		fmt.Println("请输入要进行计算的两个数字，数字2：")
+		fmt.Scan(&c)
+		switch a {
+		case "1":
+			result := common.Sum(b, c)
+			fmt.Println("计算结果为：", result)
+			break
+		case "2":
+			result := common.Subtraction(b, c)
+			fmt.Println("计算结果为：", result)
+			break
+		case "3":
+			result := common.Dultiplication(b, c)
+			fmt.Println("计算结果为：", result)
+			break
+		case "4":
+			result := common.Division(b, c)
+			fmt.Println("计算结果为：", result)
+			break
+		}
+		fmt.Println("是否继续进行计算？yes：是；no：否")
+		fmt.Scan(&a)
+		if a == "no" {
+			break
+		} else {
+			fmt.Println("请继续键入序号，继续进行计算")
+		}
+	}
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
