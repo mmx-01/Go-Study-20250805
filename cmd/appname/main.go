@@ -1,11 +1,9 @@
 package main
 
 import (
-	"NewProject/internal/pkg1/common"
 	"fmt"
 	"strconv"
 	"strings"
-	"time"
 )
 
 const PI = 100
@@ -491,57 +489,75 @@ func main() {
 	/**
 	以下为计算器
 	*/
-	var a string
-	var b int
-	var c int
-	var _ string
-	fmt.Println("您好，欢迎使用命令行计算器，请按照以下提示语进行操作！")
-	for {
-		fmt.Print("1：加法；2：减法；3：乘法；4：除法；5：退出；\n")
-		fmt.Print("请选择上述序号进行操作: ")
-		fmt.Scan(&a)
-		if a == "5" {
-			break
-		}
-		time.Sleep(1 * time.Second)
-		e := "."
-		fmt.Print(e)
-		time.Sleep(1 * time.Second)
-		e += "."
-		fmt.Println(e)
-		time.Sleep(1 * time.Second)
-		fmt.Println("您选择的计算类型是：", common.Search(a))
+	//var a string
+	//var b int
+	//var c int
+	//var _ string
+	//fmt.Println("您好，欢迎使用命令行计算器，请按照以下提示语进行操作！")
+	//for {
+	//	fmt.Print("1：加法；2：减法；3：乘法；4：除法；5：退出；\n")
+	//	fmt.Print("请选择上述序号进行操作: ")
+	//	fmt.Scan(&a)
+	//	if a == "5" {
+	//		break
+	//	}
+	//	time.Sleep(1 * time.Second)
+	//	e := "."
+	//	fmt.Print(e)
+	//	time.Sleep(1 * time.Second)
+	//	e += "."
+	//	fmt.Println(e)
+	//	time.Sleep(1 * time.Second)
+	//	fmt.Println("您选择的计算类型是：", common.Search(a))
+	//
+	//	fmt.Println("请输入要进行计算的两个数字，数字1：")
+	//	fmt.Scan(&b)
+	//	fmt.Println("请输入要进行计算的两个数字，数字2：")
+	//	fmt.Scan(&c)
+	//	switch a {
+	//	case "1":
+	//		result := common.Sum(b, c)
+	//		fmt.Println("计算结果为：", result)
+	//		break
+	//	case "2":
+	//		result := common.Subtraction(b, c)
+	//		fmt.Println("计算结果为：", result)
+	//		break
+	//	case "3":
+	//		result := common.Dultiplication(b, c)
+	//		fmt.Println("计算结果为：", result)
+	//		break
+	//	case "4":
+	//		result := common.Division(b, c)
+	//		fmt.Println("计算结果为：", result)
+	//		break
+	//	}
+	//	fmt.Println("是否继续进行计算？yes：是；no：否")
+	//	fmt.Scan(&a)
+	//	if a == "no" {
+	//		break
+	//	} else {
+	//		fmt.Println("请继续键入序号，继续进行计算")
+	//	}
+	//}
+	//x := 0x11
+	//fmt.Printf("x的类型为%T", x)
+	// 声明一个指针
+	//a := 123
+	////s := &a
+	////fmt.Println(*s) // 打印的时候，使用*为解引用，不使用*打印的是变量的地址，使用*打印的是解引用的值也就是123
+	//pt1 := &a
+	//
+	//pt2 := &pt1
+	//
+	//fmt.Println("pt1地址地址为：", pt1)
+	//fmt.Println("pt2地址地址为：", pt2)
+	//
+	//*pt1 = 100
+	//**pt2 = 200
+	//fmt.Println("更改后的pt1的值：", *pt1)
+	//fmt.Println("更改后的pt2的值：", **pt2)
 
-		fmt.Println("请输入要进行计算的两个数字，数字1：")
-		fmt.Scan(&b)
-		fmt.Println("请输入要进行计算的两个数字，数字2：")
-		fmt.Scan(&c)
-		switch a {
-		case "1":
-			result := common.Sum(b, c)
-			fmt.Println("计算结果为：", result)
-			break
-		case "2":
-			result := common.Subtraction(b, c)
-			fmt.Println("计算结果为：", result)
-			break
-		case "3":
-			result := common.Dultiplication(b, c)
-			fmt.Println("计算结果为：", result)
-			break
-		case "4":
-			result := common.Division(b, c)
-			fmt.Println("计算结果为：", result)
-			break
-		}
-		fmt.Println("是否继续进行计算？yes：是；no：否")
-		fmt.Scan(&a)
-		if a == "no" {
-			break
-		} else {
-			fmt.Println("请继续键入序号，继续进行计算")
-		}
-	}
 }
 
 // 若函数在参数后写了return_type类型，那么此函数必须要使用return来返回结果
@@ -729,4 +745,11 @@ func (tea teacher) showDemo() {
 // 将数组当做函数参数传递
 func Demo8(a [7]string) [7]string {
 	return a
+}
+
+// 指针类型的返参和参数的函数
+func pdf(a, b *int) *int {
+	//var c *int
+	c := *a * *b
+	return &c
 }
